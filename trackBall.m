@@ -22,7 +22,7 @@ function varargout = trackBall(varargin)
 
 % Edit the above text to modify the response to help trackBall
 
-% Last Modified by GUIDE v2.5 25-Dec-2018 23:52:37
+% Last Modified by GUIDE v2.5 26-Dec-2018 00:11:47
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -414,5 +414,81 @@ end
 % --- Executes on button press in Push_Button_Euler_Principle_Angle_and_Axis.
 function Push_Button_Euler_Principle_Angle_and_Axis_Callback(hObject, eventdata, handles)
 % hObject    handle to Push_Button_Euler_Principle_Angle_and_Axis (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+
+function phi_edit_Callback(hObject, eventdata, handles)
+% hObject    handle to phi_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of phi_edit as text
+%        str2double(get(hObject,'String')) returns contents of phi_edit as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function phi_edit_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to phi_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function theta_edit_Callback(hObject, eventdata, handles)
+% hObject    handle to theta_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of theta_edit as text
+%        str2double(get(hObject,'String')) returns contents of theta_edit as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function theta_edit_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to theta_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function psi_edit_Callback(hObject, eventdata, handles)
+% hObject    handle to psi_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of psi_edit as text
+%        str2double(get(hObject,'String')) returns contents of psi_edit as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function psi_edit_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to psi_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on button press in Push_Button_Euler_Angles.
+function Push_Button_Euler_Angles_Callback(hObject, eventdata, handles)
+% hObject    handle to Push_Button_Euler_Angles (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
