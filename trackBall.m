@@ -22,7 +22,7 @@ function varargout = trackBall(varargin)
 
 % Edit the above text to modify the response to help trackBall
 
-% Last Modified by GUIDE v2.5 26-Dec-2018 00:11:47
+% Last Modified by GUIDE v2.5 26-Dec-2018 00:21:52
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -320,18 +320,18 @@ function Reset_Button_Callback(hObject, eventdata, handles)
 
 
 
-function edit5_Callback(hObject, eventdata, handles)
-% hObject    handle to edit5 (see GCBO)
+function u_angle_edit_Callback(hObject, eventdata, handles)
+% hObject    handle to u_angle_edit (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of edit5 as text
-%        str2double(get(hObject,'String')) returns contents of edit5 as a double
+% Hints: get(hObject,'String') returns contents of u_angle_edit as text
+%        str2double(get(hObject,'String')) returns contents of u_angle_edit as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function edit5_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to edit5 (see GCBO)
+function u_angle_edit_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to u_angle_edit (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -343,18 +343,18 @@ end
 
 
 
-function x_edit_Callback(hObject, eventdata, handles)
-% hObject    handle to x_edit (see GCBO)
+function u_x_edit_Callback(hObject, eventdata, handles)
+% hObject    handle to u_x_edit (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of x_edit as text
-%        str2double(get(hObject,'String')) returns contents of x_edit as a double
+% Hints: get(hObject,'String') returns contents of u_x_edit as text
+%        str2double(get(hObject,'String')) returns contents of u_x_edit as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function x_edit_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to x_edit (see GCBO)
+function u_x_edit_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to u_x_edit (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -366,18 +366,18 @@ end
 
 
 
-function y_edit_Callback(hObject, eventdata, handles)
-% hObject    handle to y_edit (see GCBO)
+function u_y_edit_Callback(hObject, eventdata, handles)
+% hObject    handle to u_y_edit (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of y_edit as text
-%        str2double(get(hObject,'String')) returns contents of y_edit as a double
+% Hints: get(hObject,'String') returns contents of u_y_edit as text
+%        str2double(get(hObject,'String')) returns contents of u_y_edit as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function y_edit_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to y_edit (see GCBO)
+function u_y_edit_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to u_y_edit (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -389,18 +389,18 @@ end
 
 
 
-function z_edit_Callback(hObject, eventdata, handles)
-% hObject    handle to z_edit (see GCBO)
+function u_z_edit_Callback(hObject, eventdata, handles)
+% hObject    handle to u_z_edit (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of z_edit as text
-%        str2double(get(hObject,'String')) returns contents of z_edit as a double
+% Hints: get(hObject,'String') returns contents of u_z_edit as text
+%        str2double(get(hObject,'String')) returns contents of u_z_edit as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function z_edit_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to z_edit (see GCBO)
+function u_z_edit_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to u_z_edit (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -490,5 +490,12 @@ end
 % --- Executes on button press in Push_Button_Euler_Angles.
 function Push_Button_Euler_Angles_Callback(hObject, eventdata, handles)
 % hObject    handle to Push_Button_Euler_Angles (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in Push_Button_Rotation_Vector.
+function Push_Button_Rotation_Vector_Callback(hObject, eventdata, handles)
+% hObject    handle to Push_Button_Rotation_Vector (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
