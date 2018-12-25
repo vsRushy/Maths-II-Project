@@ -22,7 +22,7 @@ function varargout = trackBall(varargin)
 
 % Edit the above text to modify the response to help trackBall
 
-% Last Modified by GUIDE v2.5 24-Nov-2016 11:52:15
+% Last Modified by GUIDE v2.5 25-Dec-2018 23:43:13
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -210,4 +210,103 @@ z = reshape(z(con(:)),[4,6]);
 for q = 1:6
     h(q).Vertices = [x(:,q) y(:,q) z(:,q)];
     h(q).FaceColor = c(q,:);
+end
+
+
+% --- Executes on button press in pushbutton1.
+function pushbutton1_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+
+function q_0_edit_Callback(hObject, eventdata, handles)
+% hObject    handle to q_0_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of q_0_edit as text
+%        str2double(get(hObject,'String')) returns contents of q_0_edit as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function q_0_edit_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to q_0_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function q_1_edit_Callback(hObject, eventdata, handles)
+% hObject    handle to q_1_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of q_1_edit as text
+%        str2double(get(hObject,'String')) returns contents of q_1_edit as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function q_1_edit_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to q_1_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function q_2_edit_Callback(hObject, eventdata, handles)
+% hObject    handle to q_2_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of q_2_edit as text
+%        str2double(get(hObject,'String')) returns contents of q_2_edit as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function q_2_edit_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to q_2_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function q_3_edit_Callback(hObject, eventdata, handles)
+% hObject    handle to q_3_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of q_3_edit as text
+%        str2double(get(hObject,'String')) returns contents of q_3_edit as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function q_3_edit_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to q_3_edit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
 end
