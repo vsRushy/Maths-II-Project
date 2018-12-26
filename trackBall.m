@@ -128,14 +128,14 @@ guidata(hObject,handles);
 
 function h = DrawCube(R)
 
-M0 = [    -1  -1 1;   %Node 1
-    -1   1 1;   %Node 2
-    1   1 1;   %Node 3
-    1  -1 1;   %Node 4
-    -1  -1 -1;  %Node 5
-    -1   1 -1;  %Node 6
-    1   1 -1;  %Node 7
-    1  -1 -1]; %Node 8
+M0 = [ -1 -1 1;   %Node 1
+       -1 1 1;    %Node 2
+        1 1 1;    %Node 3
+        1 -1 1;   %Node 4
+       -1 -1 -1;  %Node 5
+       -1 1 -1;   %Node 6
+        1 1 -1;   %Node 7
+        1 -1 -1]; %Node 8
 
 M = (R*M0')';
 
@@ -179,14 +179,14 @@ c = 1/255*[255 248 88;
     255 178 0;
     255 0 0];
 
-M0 = [    -1  -1 1;   %Node 1
-    -1   1 1;   %Node 2
-    1   1 1;   %Node 3
-    1  -1 1;   %Node 4
-    -1  -1 -1;  %Node 5
-    -1   1 -1;  %Node 6
-    1   1 -1;  %Node 7
-    1  -1 -1]; %Node 8
+M0 = [ -1 -1 1;   %Node 1
+       -1 1 1;    %Node 2
+        1 1 1;    %Node 3
+        1 -1 1;   %Node 4
+       -1 -1 -1;  %Node 5
+       -1 1 -1;   %Node 6
+        1 1 -1;   %Node 7
+        1 -1 -1]; %Node 8
 
 M = (R*M0')';
 
@@ -398,6 +398,7 @@ function u_z_edit_Callback(hObject, eventdata, handles)
 %        str2double(get(hObject,'String')) returns contents of u_z_edit as a double
 
 
+
 % --- Executes during object creation, after setting all properties.
 function u_z_edit_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to u_z_edit (see GCBO)
@@ -416,7 +417,13 @@ function Push_Button_Euler_Principle_Angle_and_Axis_Callback(hObject, eventdata,
 % hObject    handle to Push_Button_Euler_Principle_Angle_and_Axis (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+u_x = str2double(get(handles.u_x_edit, 'String'));
+u_y = str2double(get(handles.u_y_edit, 'String'));
+u_z = str2double(get(handles.u_z_edit, 'String'));
+u_axis = [u_x; u_y; u_z];
+u_angle = str2double(get(handles.u_angle_edit, 'String'));
+R = Eaa2rotMat(u_axis, u_angle);
+handles.Cube = RedrawCube(R, handles.Cube);
 
 
 function phi_edit_Callback(hObject, eventdata, handles)
