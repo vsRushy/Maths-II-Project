@@ -506,6 +506,11 @@ function Push_Button_Euler_Angles_Callback(hObject, eventdata, handles)
 % hObject    handle to Push_Button_Euler_Angles (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+e_phi = str2double(get(handles.phi_edit, 'String'));
+e_theta = str2double(get(handles.theta_edit, 'String'));
+e_psi = str2double(get(handles.psi_edit, 'String'));
+R = eAngles2rotM(e_phi, e_theta, e_psi);
+handles.Cube = RedrawCube(R, handles.Cube);
 
 
 % --- Executes on button press in Push_Button_Rotation_Vector.
