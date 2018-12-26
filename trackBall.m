@@ -317,7 +317,8 @@ function Reset_Button_Callback(hObject, eventdata, handles)
 % hObject    handle to Reset_Button (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+R = eye(3);
+handles.Cube = RedrawCube(R, handles.Cube);
 
 
 function u_angle_edit_Callback(hObject, eventdata, handles)
