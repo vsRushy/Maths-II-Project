@@ -218,7 +218,13 @@ function Push_Button_Quaternion_Callback(hObject, eventdata, handles)
 % hObject    handle to Push_Button_Quaternion (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+quat_0 = str2double(get(handles.q_0_edit, 'String'));
+quat_1 = str2double(get(handles.q_1_edit, 'String'));
+quat_2 = str2double(get(handles.q_2_edit, 'String'));
+quat_3 = str2double(get(handles.q_3_edit, 'String'));
+quat = [quat_0; quat_1; quat_2; quat_3];
+R = Quat2rotMat(quat);
+handles.Cube = RedrawCube(R, handles.Cube);
 
 
 function q_0_edit_Callback(hObject, eventdata, handles)
