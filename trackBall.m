@@ -226,6 +226,8 @@ quat = [quat_0; quat_1; quat_2; quat_3];
 R = Quat2rotMat(quat);
 SetGuideRotMat(handles, R);
 SetEPAAFromRotMat(handles, R);
+SetEulerAnglesFromRotMat(handles, R);
+SetRotationVectorFromRotMat(handles, R);
 handles.Cube = RedrawCube(R, handles.Cube);
 
 
@@ -439,6 +441,8 @@ u_axis = [u_x; u_y; u_z];
 u_angle = str2double(get(handles.u_angle_edit, 'String'));
 R = Eaa2rotMat(u_axis, u_angle);
 SetGuideRotMat(handles, R);
+SetEulerAnglesFromRotMat(handles, R);
+SetRotationVectorFromRotMat(handles, R);
 handles.Cube = RedrawCube(R, handles.Cube);
 
 
@@ -521,6 +525,7 @@ e_psi = str2double(get(handles.psi_edit, 'String'));
 R = eAngles2rotM(e_phi, e_theta, e_psi);
 SetGuideRotMat(handles, R);
 SetEPAAFromRotMat(handles, R);
+SetRotationVectorFromRotMat(handles, R);
 handles.Cube = RedrawCube(R, handles.Cube);
 
 
@@ -536,6 +541,7 @@ rot_vector = [x_rot_v; y_rot_v; z_rot_v];
 R = rotVec2rotMat(rot_vector);
 SetGuideRotMat(handles, R);
 SetEPAAFromRotMat(handles, R);
+SetEulerAnglesFromRotMat(handles, R);
 handles.Cube = RedrawCube(R, handles.Cube);
 
 
@@ -676,3 +682,15 @@ function SetEPAAFromRotMat(handles, rotation_matrix)
     set(handles.u_y_edit, 'String', e_axis(2));
     set(handles.u_z_edit, 'String', e_axis(3));
     
+function SetEulerAnglesFromRotMat(handles, rotation_matrix)
+    [a_1, a_2, a_3] = rotM2eAngles(rotation_matrix);
+    set(handles.phi_edit, 'String', a_1);
+    set(handles.theta_edit, 'String', a_2);
+    set(handles.psi_edit, 'String', a_3);
+    
+function SetRotationVectorFromRotMat(handles, rotation_matrix)
+    rot_vec = rotM2rotVec(rotation_matrix);
+    set(handles.x_rot_edit, 'String', rot_vec(1));
+    set(handles.y_rot_edit, 'String', rot_vec(2));
+    set(handles.z_rot_edit, 'String', rot_vec(3));
+
