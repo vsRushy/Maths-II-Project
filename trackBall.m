@@ -225,6 +225,7 @@ quat_3 = str2double(get(handles.q_3_edit, 'String'));
 quat = [quat_0; quat_1; quat_2; quat_3];
 R = Quat2rotMat(quat);
 SetGuideRotMat(handles, R);
+SetEPAAFromRotMat(handles, R);
 handles.Cube = RedrawCube(R, handles.Cube);
 
 
@@ -519,6 +520,7 @@ e_theta = str2double(get(handles.theta_edit, 'String'));
 e_psi = str2double(get(handles.psi_edit, 'String'));
 R = eAngles2rotM(e_phi, e_theta, e_psi);
 SetGuideRotMat(handles, R);
+SetEPAAFromRotMat(handles, R);
 handles.Cube = RedrawCube(R, handles.Cube);
 
 
@@ -533,6 +535,7 @@ z_rot_v = str2double(get(handles.z_rot_edit, 'String'));
 rot_vector = [x_rot_v; y_rot_v; z_rot_v];
 R = rotVec2rotMat(rot_vector);
 SetGuideRotMat(handles, R);
+SetEPAAFromRotMat(handles, R);
 handles.Cube = RedrawCube(R, handles.Cube);
 
 
@@ -652,3 +655,24 @@ function SetGuideRotMat(handles, rotation_matrix)
         set(handles.rm_31, 'String', rotation_matrix(3, 1));
         set(handles.rm_32, 'String', rotation_matrix(3, 2));
         set(handles.rm_33, 'String', rotation_matrix(3, 3));
+        
+function rotation_matrix = GetGuideRotMat(handles)
+    rotation_matrix(1, 1) = str2double(get(handles.rm_11, 'String'));
+    rotation_matrix(1, 2) = str2double(get(handles.rm_12, 'String'));
+    rotation_matrix(1, 3) = str2double(get(handles.rm_13, 'String'));
+    rotation_matrix(2, 1) = str2double(get(handles.rm_21, 'String'));
+    rotation_matrix(2, 2) = str2double(get(handles.rm_22, 'String'));
+    rotation_matrix(2, 3) = str2double(get(handles.rm_23, 'String'));
+    rotation_matrix(3, 1) = str2double(get(handles.rm_31, 'String'));
+    rotation_matrix(3, 2) = str2double(get(handles.rm_32, 'String'));
+    rotation_matrix(3, 3) = str2double(get(handles.rm_33, 'String'));
+        
+% ---------
+
+function SetEPAAFromRotMat(handles, rotation_matrix)
+    [e_axis, e_angle] = rotMat2Eaa(rotation_matrix);
+    set(handles.u_angle_edit, 'String', e_angle);
+    set(handles.u_x_edit, 'String', e_axis(1));
+    set(handles.u_y_edit, 'String', e_axis(2));
+    set(handles.u_z_edit, 'String', e_axis(3));
+    

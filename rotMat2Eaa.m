@@ -1,4 +1,4 @@
-function [euler_axis,euler_angle] = rotMat2Eaa(rotation_matrix)
+function [euler_axis, euler_angle] = rotMat2Eaa(rotation_matrix)
 % This function returns the Euler principal axis and the Euler principal
 % angle. Note that the angle will be given in degrees and the axis will
 % be given normalized.
