@@ -254,6 +254,8 @@ end
 
 SetGuideRotMat(hin, R);
 SetEPAAFromRotMat(hin, R);
+SetEulerAnglesFromRotMat(hin, R);
+SetRotationVectorFromRotMat(hin, R);
 SetQuaternionFromRotMat(hin, R);
 
 %rotation_matrix = str2double(get(handles.rm_11, 'String'));
