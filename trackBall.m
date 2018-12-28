@@ -252,6 +252,7 @@ for q = 1:6
     h(q).FaceColor = c(q,:);
 end
 
+% Just set every parameter according to the actual rotation matrix.
 SetGuideRotMat(hin, R);
 SetEPAAFromRotMat(hin, R);
 SetEulerAnglesFromRotMat(hin, R);
