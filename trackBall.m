@@ -99,6 +99,10 @@ ymouse = mousepos(1,2);
 if xmouse > xlim(1) && xmouse < xlim(2) && ymouse > ylim(1) && ymouse < ylim(2)
 
     set(handles.figure1,'WindowButtonMotionFcn',{@my_MouseMoveFcn,hObject});
+    
+    % Get mouse input x-y. Here we store pos of the first click in the handles.
+    handles.x_click = xmouse;
+    handles.y_click = ymouse;
 end
 guidata(hObject,handles)
 
@@ -115,13 +119,46 @@ ylim = get(handles.axes1,'ylim');
 mousepos=get(handles.axes1,'CurrentPoint');
 xmouse = mousepos(1,1);
 ymouse = mousepos(1,2);
+% -----
+i_vect = zeros(3, 1);
+f_vect = zeros(3, 1);
+r = 1;
 
 if xmouse > xlim(1) && xmouse < xlim(2) && ymouse > ylim(1) && ymouse < ylim(2)
 
-    %%% DO things
-    % use with the proper R matrix to rotate the cube
-    R = [1 0 0; 0 -1 0;0 0 -1];
-    handles.Cube = RedrawCube(R,handles.Cube);
+    % In order to rotate the cube, we need to use the Holdoyd's arcball
+    % method, as specified in the project document.
+    
+    % Get current mouse position x-y
+    m_x = handles.x_click;
+    m_y = handles.y_click;
+    
+    % --------------- First step...
+    if((m_x^2 + m_y^2) < 1 / 2 * r^2)
+        m_z = sqrt(r^2 - m_x^2 - m_y^2); % Apply formula
+        i_vect = [m_x; m_y; m_z];
+    end
+    if(m_x^2 + m_y^2 >= 1 / 2 * r^2)
+        i_vect= [m_x; m_y; (r^2) / (2 * sqrt(m_x^2 + m_y^2))]; % Apply formula
+        i_vect= (r * i_vect) / norm(i_vect); % Make sure this vector is normalized!!
+    end
+    
+    % --------------- Second step...
+    if(xmouse^2 + ymouse^2 < 1 / 2 * r^2)
+        zmouse= sqrt(r^2 - xmouse^2 - ymouse^2); % Apply formula
+        f_vect = [xmouse; ymouse; zmouse];
+    end
+    if(xmouse^2 + ymouse^2 >= 1 / 2 * r^2)
+        f_vect= [xmouse; ymouse; (r^2)/(2 * sqrt(xmouse^2 + ymouse^2))]; % Apply formula
+        f_vect= (r * f_vect) / norm(f_vect); % Make sure this vector is normalized!!
+    end
+    
+    % Now we can rotate the cube correctly
+    r_axis = cross(f_vect, i_vect); % Get rotation axis
+    r_angle = -acosd(dot(f_vect, i_vect)); % Get the rotation angle between the two vectors. We also need to negate the angle (IMPORTANT).
+   
+    R = Eaa2rotMat(r_axis, r_angle);
+    handles.Cube = RedrawCube(R, handles);
     
 end
 guidata(hObject,handles);
@@ -169,9 +206,12 @@ for q = 1:length(c)
     h(q).FaceColor = c(q,:);
 end
 
-function h = RedrawCube(R,hin)
+% NOTE: This function has been modified so that we can access the handles
+% when we draw the cube. Like this, we can update anything that it is on the
+% handles, mainly for updating the GUIDE fields any time we draw the cube.
+function h = RedrawCube(R, hin)
 
-h = hin;
+h = hin.Cube;
 c = 1/255*[255 248 88;
     0 0 0;
     57 183 225;
@@ -212,6 +252,10 @@ for q = 1:6
     h(q).FaceColor = c(q,:);
 end
 
+SetGuideRotMat(hin, M);
+
+%rotation_matrix = str2double(get(handles.rm_11, 'String'));
+%set(handles.rm_11, 'String', '2');
 
 % --- Executes on button press in Push_Button_Quaternion.
 function Push_Button_Quaternion_Callback(hObject, eventdata, handles)
@@ -228,7 +272,7 @@ SetGuideRotMat(handles, R);
 SetEPAAFromRotMat(handles, R);
 SetEulerAnglesFromRotMat(handles, R);
 SetRotationVectorFromRotMat(handles, R);
-handles.Cube = RedrawCube(R, handles.Cube);
+handles.Cube = RedrawCube(R, handles);
 
 
 function q_0_edit_Callback(hObject, eventdata, handles)
@@ -334,7 +378,8 @@ ResetRotationVector(handles);
 ResetRotationMatrix(handles);
 
 R = eye(3);
-handles.Cube = RedrawCube(R, handles.Cube);
+handles.Cube = RedrawCube(R, handles);
+SetGuideRotMat(handles, R);
 
 
 function u_angle_edit_Callback(hObject, eventdata, handles)
@@ -444,7 +489,7 @@ SetGuideRotMat(handles, R);
 SetEulerAnglesFromRotMat(handles, R);
 SetRotationVectorFromRotMat(handles, R);
 SetQuaternionFromRotMat(handles, R);
-handles.Cube = RedrawCube(R, handles.Cube);
+handles.Cube = RedrawCube(R, handles);
 
 
 function phi_edit_Callback(hObject, eventdata, handles)
@@ -528,7 +573,7 @@ SetGuideRotMat(handles, R);
 SetEPAAFromRotMat(handles, R);
 SetRotationVectorFromRotMat(handles, R);
 SetQuaternionFromRotMat(handles, R);
-handles.Cube = RedrawCube(R, handles.Cube);
+handles.Cube = RedrawCube(R, handles);
 
 
 % --- Executes on button press in Push_Button_Rotation_Vector.
@@ -545,7 +590,7 @@ SetGuideRotMat(handles, R);
 SetEPAAFromRotMat(handles, R);
 SetEulerAnglesFromRotMat(handles, R);
 SetQuaternionFromRotMat(handles, R);
-handles.Cube = RedrawCube(R, handles.Cube);
+handles.Cube = RedrawCube(R, handles);
 
 
 function x_rot_edit_Callback(hObject, eventdata, handles)
