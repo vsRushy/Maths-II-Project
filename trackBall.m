@@ -252,7 +252,9 @@ for q = 1:6
     h(q).FaceColor = c(q,:);
 end
 
-SetGuideRotMat(hin, M);
+SetGuideRotMat(hin, R);
+SetEPAAFromRotMat(hin, R);
+SetQuaternionFromRotMat(hin, R);
 
 %rotation_matrix = str2double(get(handles.rm_11, 'String'));
 %set(handles.rm_11, 'String', '2');
@@ -371,11 +373,17 @@ function Reset_Button_Callback(hObject, eventdata, handles)
 % hObject    handle to Reset_Button (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-ResetQuaternion(handles);
-ResetEPAA(handles);
-ResetEulerAngles(handles);
-ResetRotationVector(handles);
-ResetRotationMatrix(handles);
+
+% ------------ The following is not needed anymore. It was done when we didn't have the
+% trackball yet.
+
+%ResetEPAA(handles);
+%ResetQuaternion(handles);
+%ResetEulerAngles(handles);
+%ResetRotationVector(handles);
+%ResetRotationMatrix(handles);
+
+% ------------
 
 R = eye(3);
 handles.Cube = RedrawCube(R, handles);
