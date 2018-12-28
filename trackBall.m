@@ -270,10 +270,6 @@ quat_2 = str2double(get(handles.q_2_edit, 'String'));
 quat_3 = str2double(get(handles.q_3_edit, 'String'));
 quat = [quat_0; quat_1; quat_2; quat_3];
 R = Quat2rotMat(quat);
-SetGuideRotMat(handles, R);
-SetEPAAFromRotMat(handles, R);
-SetEulerAnglesFromRotMat(handles, R);
-SetRotationVectorFromRotMat(handles, R);
 handles.Cube = RedrawCube(R, handles);
 
 
@@ -493,10 +489,6 @@ u_z = str2double(get(handles.u_z_edit, 'String'));
 u_axis = [u_x; u_y; u_z];
 u_angle = str2double(get(handles.u_angle_edit, 'String'));
 R = Eaa2rotMat(u_axis, u_angle);
-SetGuideRotMat(handles, R);
-SetEulerAnglesFromRotMat(handles, R);
-SetRotationVectorFromRotMat(handles, R);
-SetQuaternionFromRotMat(handles, R);
 handles.Cube = RedrawCube(R, handles);
 
 
@@ -577,10 +569,6 @@ e_phi = str2double(get(handles.phi_edit, 'String'));
 e_theta = str2double(get(handles.theta_edit, 'String'));
 e_psi = str2double(get(handles.psi_edit, 'String'));
 R = eAngles2rotM(e_phi, e_theta, e_psi);
-SetGuideRotMat(handles, R);
-SetEPAAFromRotMat(handles, R);
-SetRotationVectorFromRotMat(handles, R);
-SetQuaternionFromRotMat(handles, R);
 handles.Cube = RedrawCube(R, handles);
 
 
@@ -594,10 +582,6 @@ y_rot_v = str2double(get(handles.y_rot_edit, 'String'));
 z_rot_v = str2double(get(handles.z_rot_edit, 'String'));
 rot_vector = [x_rot_v; y_rot_v; z_rot_v];
 R = rotVec2rotMat(rot_vector);
-SetGuideRotMat(handles, R);
-SetEPAAFromRotMat(handles, R);
-SetEulerAnglesFromRotMat(handles, R);
-SetQuaternionFromRotMat(handles, R);
 handles.Cube = RedrawCube(R, handles);
 
 
@@ -670,7 +654,7 @@ end
 
 
 % -------------------------------------------------------------------------
-% -------------------------------------------------------------------------
+% ----------------------------UTILS------------------------------------
 % -------------------------------------------------------------------------
 
 
