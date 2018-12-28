@@ -129,7 +129,7 @@ if xmouse > xlim(1) && xmouse < xlim(2) && ymouse > ylim(1) && ymouse < ylim(2)
     % In order to rotate the cube, we need to use the Holdoyd's arcball
     % method, as specified in the project document.
     
-    % Get current mouse position x-y
+    % Get the previously stored mouse position x-y
     m_x = handles.x_click;
     m_y = handles.y_click;
     
