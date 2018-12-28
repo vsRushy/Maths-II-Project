@@ -22,7 +22,7 @@ function varargout = trackBall(varargin)
 
 % Edit the above text to modify the response to help trackBall
 
-% Last Modified by GUIDE v2.5 27-Dec-2018 11:23:56
+% Last Modified by GUIDE v2.5 28-Dec-2018 11:16:28
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -644,26 +644,26 @@ function ResetRotationVector(handles)
     set(handles.z_rot_edit, 'String', '0');
     
 function ResetRotationMatrix(handles)
-    set(handles.rm_11, 'String', '0');
+    set(handles.rm_11, 'String', '1');
     set(handles.rm_12, 'String', '0');
     set(handles.rm_13, 'String', '0');
     set(handles.rm_21, 'String', '0');
-    set(handles.rm_22, 'String', '0');
+    set(handles.rm_22, 'String', '1');
     set(handles.rm_23, 'String', '0');
     set(handles.rm_31, 'String', '0');
     set(handles.rm_32, 'String', '0');
-    set(handles.rm_33, 'String', '0');
+    set(handles.rm_33, 'String', '1');
     
 function SetGuideRotMat(handles, rotation_matrix)
-        set(handles.rm_11, 'String', rotation_matrix(1, 1));
-        set(handles.rm_12, 'String', rotation_matrix(1, 2));
-        set(handles.rm_13, 'String', rotation_matrix(1, 3));
-        set(handles.rm_21, 'String', rotation_matrix(2, 1));
-        set(handles.rm_22, 'String', rotation_matrix(2, 2));
-        set(handles.rm_23, 'String', rotation_matrix(2, 3));
-        set(handles.rm_31, 'String', rotation_matrix(3, 1));
-        set(handles.rm_32, 'String', rotation_matrix(3, 2));
-        set(handles.rm_33, 'String', rotation_matrix(3, 3));
+    set(handles.rm_11, 'String', rotation_matrix(1, 1));
+    set(handles.rm_12, 'String', rotation_matrix(1, 2));
+    set(handles.rm_13, 'String', rotation_matrix(1, 3));
+    set(handles.rm_21, 'String', rotation_matrix(2, 1));
+    set(handles.rm_22, 'String', rotation_matrix(2, 2));
+    set(handles.rm_23, 'String', rotation_matrix(2, 3));
+    set(handles.rm_31, 'String', rotation_matrix(3, 1));
+    set(handles.rm_32, 'String', rotation_matrix(3, 2));
+    set(handles.rm_33, 'String', rotation_matrix(3, 3));
         
 function rotation_matrix = GetGuideRotMat(handles)
     rotation_matrix(1, 1) = str2double(get(handles.rm_11, 'String'));
