@@ -133,7 +133,7 @@ if xmouse > xlim(1) && xmouse < xlim(2) && ymouse > ylim(1) && ymouse < ylim(2)
     m_x = handles.x_click;
     m_y = handles.y_click;
     
-    % --------------- First step...
+    % --------------- First step... (Initial mouse pos)
     if((m_x^2 + m_y^2) < 1 / 2 * r^2)
         m_z = sqrt(r^2 - m_x^2 - m_y^2); % Apply formula
         i_vect = [m_x; m_y; m_z];
@@ -143,7 +143,7 @@ if xmouse > xlim(1) && xmouse < xlim(2) && ymouse > ylim(1) && ymouse < ylim(2)
         i_vect= (r * i_vect) / norm(i_vect); % Make sure this vector is normalized!!
     end
     
-    % --------------- Second step...
+    % --------------- Second step... (Current mouse pos)
     if(xmouse^2 + ymouse^2 < 1 / 2 * r^2)
         zmouse= sqrt(r^2 - xmouse^2 - ymouse^2); % Apply formula
         f_vect = [xmouse; ymouse; zmouse];
