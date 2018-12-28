@@ -258,8 +258,6 @@ SetEulerAnglesFromRotMat(hin, R);
 SetRotationVectorFromRotMat(hin, R);
 SetQuaternionFromRotMat(hin, R);
 
-%rotation_matrix = str2double(get(handles.rm_11, 'String'));
-%set(handles.rm_11, 'String', '2');
 
 % --- Executes on button press in Push_Button_Quaternion.
 function Push_Button_Quaternion_Callback(hObject, eventdata, handles)
