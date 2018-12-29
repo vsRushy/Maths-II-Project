@@ -100,9 +100,12 @@ if xmouse > xlim(1) && xmouse < xlim(2) && ymouse > ylim(1) && ymouse < ylim(2)
 
     set(handles.figure1,'WindowButtonMotionFcn',{@my_MouseMoveFcn,hObject});
     
-    % Get mouse input x-y. Here we store pos of the first click in the handles.
-    handles.x_click = xmouse;
-    handles.y_click = ymouse;
+    % Get mouse input x-y. We need to share the two variables with other
+    % functions.
+    x_click = xmouse;
+    SetVariableGlobal_xclick(x_click);
+    y_click = ymouse;
+    SetVariableGlobal_yclick(y_click);
 end
 guidata(hObject,handles)
 
@@ -130,8 +133,8 @@ if xmouse > xlim(1) && xmouse < xlim(2) && ymouse > ylim(1) && ymouse < ylim(2)
     % method, as specified in the project document.
     
     % Get the previously stored mouse position x-y
-    m_x = handles.x_click;
-    m_y = handles.y_click;
+    m_x = GetVariableGlobal_xclick;
+    m_y = GetVariableGlobal_yclick;
     
     % --------------- First step... (Initial mouse pos)
     if((m_x^2 + m_y^2) < 1 / 2 * r^2)
@@ -742,4 +745,20 @@ function SetQuaternionFromRotMat(handles, rotation_matrix)
     set(handles.q_2_edit, 'String', quat(3));
     set(handles.q_3_edit, 'String', quat(4));
     
+% GLOBAL VAR UTILS
+function SetVariableGlobal_xclick(variable)
+    global xclick;
+    xclick = variable;
     
+function r = GetVariableGlobal_xclick
+    global xclick;
+    r = xclick;
+
+function SetVariableGlobal_yclick(variable)
+    global yclick;
+    yclick = variable;
+    
+function r = GetVariableGlobal_yclick
+    global yclick;
+    r = yclick;
+
